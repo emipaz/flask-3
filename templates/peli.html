@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titulo}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">    
+    <style>
+        td span::before {
+        content: ", ";
+        }
+        td span:first-child::before{
+            content: "";
+        }
+
+    </style>
+</head>
+<body>
+    <h1>{{titulo}}</h1>
+    <div align="center"><img style="width:500px; height:500px;" src={{pelicula.portada}}></div>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr class="bg-danger">
+                <th>#</th>
+                <th>Título</th>
+                <th>Director</th>
+                <!-- <th>Protagonistas</th> -->
+                <th>Año</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>{{pelicula.codigo}}</td>
+            <td>{{pelicula.titulo}}</a></td>
+            <td>{{pelicula.director}}</td>    
+            <td>{{pelicula.year}}</td>
+
+        </tbody>        
+    </table>
+    <br>
+    {% if pelicula %}
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr class="bg-danger">
+                    <th>PROTAGONISTAS</th>
+                </tr>
+                    </thead>
+                        <tbody>
+                            {% for i in pelicula.protagonistas %}
+                                <tr><td>{{i}}</td></tr>
+                            {% endfor %}
+                        </tbody>
+        </table>
+    {% else %}
+        <p>No hay resultado de la busqueda</p>
+    {% endif %}
+</body>
+</html>
